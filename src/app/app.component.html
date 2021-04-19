@@ -1,0 +1,14 @@
+<h1>
+  Angular task list
+</h1>
+<div class="container">
+  <h2>Plan your day!</h2>
+  <h2>User: Ivan Ivanov. Count of Task {{count}}</h2>
+  <hr>
+  <div class="d-flex justify-content-between">
+    <input class="form-control" type="text" style="width: 79%;" [(ngModel)]="taskName" name="taskName" >
+    <input class="btn btn-success" type="button" style="width: 20%;" value="Add" (click)="addTask()">
+  </div>
+  <hr style="margin-bottom: 0px;">
+</div>
+<app-task [childarray]="tasks" (fromChild)="getValue($event)"></app-task>

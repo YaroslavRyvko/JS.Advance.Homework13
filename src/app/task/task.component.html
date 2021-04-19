@@ -1,0 +1,33 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Task</th>
+        <th scope="col">Check</th>
+        <th scope="col">DONE/IN PROGRESS</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of childarray, index as i">
+        <td class="lineheight">{{i+1}}</td>
+        <td class="lineheight">{{task.finalName}}</td>
+        <td><input type="checkbox" (click)="checkstatus(i)" style="margin-top: 13px;"></td>
+        <td *ngIf="!task.checkStatus" style="color: red;" class="lineheight">In PROGRESS</td>
+        <td *ngIf="task.checkStatus" style="color: green;" class="lineheight">Done</td>
+        <td><button type="button" class="btn btn-warning" (click)="editTask(i)">EDIT</button></td>
+        <td><button type="button" [class.disabled]='!task.checkStatus' class="btn btn-danger"
+            (click)="deleteTask(i)">DELETE</button></td>
+      </tr>
+      <tr *ngIf="validSave">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><input type="text" class="form-control" style="width: 250px;" [(ngModel)]="saveTask" name="saveTask"></td>
+        <td><button type="button" class="btn btn-success" (click)="saveValieTask()">Save</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
